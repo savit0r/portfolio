@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-l-bg: #F5F5F3;
+  --color-l-surface: #FFFFFF;
+  --color-l-text: #1A1A1A;
+  --color-l-muted: #6B6B6B;
+  --color-l-border: #E5E5E5;
+  --color-l-hover: #F0F0EE;
+  --color-d-bg: #0A0A0A;
+  --color-d-surface: #161616;
+  --color-d-text: #EDEDED;
+  --color-d-muted: #999999;
+  --color-d-border: #2A2A2A;
+  --color-d-hover: #1E1E1E;
+  --color-green: #22C55E;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+/* Selection */
+::selection {
+  background-color: #1A1A1A;
+  color: #F5F5F3;
+}
+
+.dark ::selection {
+  background-color: #EDEDED;
+  color: #0A0A0A;
+}
+
+/* Pulsing green dot animation */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.3);
+  }
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
