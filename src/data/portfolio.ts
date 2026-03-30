@@ -1,5 +1,7 @@
 export const personalInfo = {
   name: "Rohit",
+  /** Square image in `public/` — path must start with `/` (e.g. `/avatar.jpg`). */
+  avatar: "/_efTabMj_400x400.jpg",
   role: "Software Developer",
   tagline: "Problem Solver | Builder | Lifelong Learner",
   bio: "I'm a passionate software developer and a fresher actively looking for opportunities to build impactful products. I love solving complex problems, writing clean code, and continuously learning new technologies. My journey through self-learning, internships, and personal projects has shaped me into a resilient and driven developer ready to make a mark.",
@@ -43,7 +45,7 @@ export const projects: Project[] = [
       "A full-stack expense management app with analytics, category tracking, and PDF/CSV export functionality.",
     tech: ["React", "Node.js", "MySQL", "Chart.js"],
     liveUrl: "#",
-    githubUrl: "https://github.com/rohit",
+    githubUrl: "https://github.com/savit0r",
   },
   {
     title: "Portfolio Website",

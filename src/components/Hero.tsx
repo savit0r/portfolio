@@ -1,10 +1,21 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import AnimatedSection from "./AnimatedSection";
 import { personalInfo } from "@/data/portfolio";
 
+const PLACEHOLDER_AVATAR = "/profile-placeholder.svg";
+
+function normalizePublicPath(path: string) {
+  if (!path) return PLACEHOLDER_AVATAR;
+  return path.startsWith("/") ? path : `/${path}`;
+}
+
 export default function Hero() {
+  const [avatarSrc, setAvatarSrc] = useState(() =>
+    normalizePublicPath(personalInfo.avatar),
+  );
   return (
     <section
       id="home"
@@ -36,15 +47,34 @@ export default function Hero() {
           )}
         </motion.div>
 
-        {/* Main heading */}
-        <motion.h1
+        {/* Avatar + main heading — image sits below the top row, to the left of the name */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tighter leading-[1.05] mb-6 sm:mb-8 text-l-text dark:text-d-text whitespace-normal break-words"
+          className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 mb-6 sm:mb-8"
         >
-          I&apos;m {personalInfo.name}
-        </motion.h1>
+          <div className="relative shrink-0 mx-auto sm:mx-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-2 ring-l-border/60 dark:ring-d-border/60 shadow-md bg-l-bg dark:bg-d-bg">
+            <Image
+              src={avatarSrc}
+              alt={`${personalInfo.name} — profile photo`}
+              fill
+              sizes="(max-width: 640px) 96px, 128px"
+              className="object-cover"
+              priority
+              unoptimized={avatarSrc.endsWith(".svg")}
+              onError={() => setAvatarSrc(PLACEHOLDER_AVATAR)}
+            />
+          </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.45, ease: [0.21, 0.47, 0.32, 0.98] }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] font-bold tracking-tighter leading-[1.05] text-l-text dark:text-d-text whitespace-normal break-words text-center sm:text-left flex-1 min-w-0"
+          >
+            I&apos;m {personalInfo.name}
+          </motion.h1>
+        </motion.div>
 
         {/* Subtitle */}
         <motion.p
