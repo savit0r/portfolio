@@ -20,13 +20,20 @@ export default function Contact() {
 
   return (
     <>
-      <section id="contact" className="bg-l-surface dark:bg-d-surface rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-l-border/60 dark:border-d-border/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] relative overflow-hidden">
+      <section id="contact" className="paper-sheet rounded-2xl p-6 sm:p-10 md:p-14 relative overflow-hidden">
         <div className="max-w-2xl relative z-10 w-full overflow-hidden">
           <AnimatedSection>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tighter text-l-text dark:text-d-text break-words whitespace-normal">
+            <div className="flex items-center gap-3 mb-4 font-mono text-xs">
+              <span className="red-ink font-bold text-sm">06 / CONTACT</span>
+              <span className="text-l-muted dark:text-d-muted">•</span>
+              <span className="text-l-muted dark:text-d-muted font-medium">
+                GET IN TOUCH
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold mb-6 tracking-tight text-l-text dark:text-d-text break-words">
               Let&apos;s work together.
             </h2>
-            <p className="text-l-muted/90 dark:text-d-muted/90 text-lg sm:text-xl mb-12 max-w-xl leading-relaxed tracking-tight">
+            <p className="text-base sm:text-lg text-l-muted dark:text-d-muted mb-10 max-w-xl leading-relaxed tracking-tight">
               I&apos;m currently looking for new opportunities. Feel free to reach
               out — I&apos;d love to hear from you.
             </p>
@@ -36,13 +43,13 @@ export default function Contact() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 w-full">
               <a
                 href={`mailto:${personalInfo.email}`}
-                className="px-8 py-4 bg-l-text dark:bg-d-text text-l-bg dark:text-d-bg rounded-2xl text-sm font-semibold tracking-wide hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg shadow-black/10 dark:shadow-white/5"
+                className="px-6 py-3.5 bg-l-text dark:bg-d-text text-l-bg dark:text-d-bg rounded-lg text-sm font-semibold tracking-wide hover:opacity-90 transition-all duration-200 text-center shadow-xs"
               >
                 Hire Me
               </a>
               <button
                 onClick={copyEmail}
-                className="px-8 py-4 bg-l-surface dark:bg-d-surface border border-l-border dark:border-d-border text-l-text dark:text-d-text rounded-2xl text-sm font-semibold tracking-wide hover:bg-l-hover dark:hover:bg-d-hover hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 min-w-[140px]"
+                className="px-6 py-3.5 bg-l-surface dark:bg-d-surface border border-l-border dark:border-d-border text-l-text dark:text-d-text rounded-lg text-sm font-semibold tracking-wide hover:bg-l-hover dark:hover:bg-d-hover transition-all duration-200 min-w-[140px]"
               >
                 <AnimatePresence mode="wait">
                   {copied ? (
@@ -51,7 +58,7 @@ export default function Contact() {
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -5 }}
-                      className="inline-flex items-center gap-1.5"
+                      className="inline-flex items-center gap-1.5 red-ink font-mono"
                     >
                       <svg
                         width="14"
@@ -84,21 +91,21 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="bg-l-surface dark:bg-d-surface rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 md:p-12 border border-l-border/60 dark:border-d-border/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 w-full">
+      <section className="paper-sheet rounded-2xl p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 w-full">
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-l-muted/50 dark:bg-d-muted/50" />
-          <p className="text-xs uppercase tracking-widest text-l-muted dark:text-d-muted m-0">
-            Follow Me
+          <span className="text-xs font-mono red-ink font-bold">FOLLOW //</span>
+          <p className="text-xs uppercase tracking-widest text-l-muted dark:text-d-muted m-0 font-medium">
+            Social Profiles
           </p>
         </div>
         
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           {personalInfo.socials.github && (
             <a
               href={personalInfo.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-l-border dark:border-d-border text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text hover:bg-l-hover dark:hover:bg-d-hover transition-all duration-200"
+              className="flex items-center justify-center w-10 h-10 rounded-lg border border-l-border dark:border-d-border text-l-muted dark:text-d-muted hover:text-red-ink hover:border-red-ink/40 transition-all duration-200"
               aria-label="GitHub"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -112,7 +119,7 @@ export default function Contact() {
               href={personalInfo.socials.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-10 h-10 rounded-full border border-l-border dark:border-d-border text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text hover:bg-l-hover dark:hover:bg-d-hover transition-all duration-200"
+              className="flex items-center justify-center w-10 h-10 rounded-lg border border-l-border dark:border-d-border text-l-muted dark:text-d-muted hover:text-red-ink hover:border-red-ink/40 transition-all duration-200"
               aria-label="LinkedIn"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

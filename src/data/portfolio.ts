@@ -3,13 +3,13 @@ export const personalInfo = {
   /** Square image in `public/` — path must start with `/` (e.g. `/avatar.jpg`). */
   avatar: "/_efTabMj_400x400.jpg",
   role: "Software Developer",
-  tagline: "Problem Solver | Builder | Lifelong Learner",
-  bio: "I'm a passionate software developer and a fresher actively looking for opportunities to build impactful products. I love solving complex problems, writing clean code, and continuously learning new technologies. My journey through self-learning, internships, and personal projects has shaped me into a resilient and driven developer ready to make a mark.",
-  email: "rohit@example.com",
+  tagline: "Full Stack Developer | Building Scalable Web Applications",
+  bio: "I build production-ready web apps using modern technologies like Next.js, Node.js, and databases. Focused on solving real-world problems through clean and efficient code.",
+  email: "rohitsatre05@gmail.com",
   location: "India",
   available: true,
   socials: {
-    github: "https://github.com/rohit",
+    github: "https://github.com/savit0r",
     linkedin: "https://linkedin.com/in/rohit",
   },
 };

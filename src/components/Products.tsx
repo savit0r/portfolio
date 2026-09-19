@@ -29,25 +29,22 @@ export default function Products() {
   return (
     <section
       id="products"
-      className="bg-l-surface dark:bg-d-surface rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-l-border/60 dark:border-d-border/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] relative overflow-hidden"
+      className="paper-sheet rounded-2xl p-6 sm:p-10 md:p-14 relative overflow-hidden"
     >
-      {/* Subtle decorative gradient */}
-      <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-gradient-to-br from-green/5 to-transparent blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-gradient-to-tr from-green/5 to-transparent blur-3xl pointer-events-none" />
-
       <div className="max-w-3xl relative z-10 w-full">
         <AnimatedSection>
-          <div className="mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-l-muted/50 dark:bg-d-muted/50" />
-              <p className="text-xs uppercase tracking-widest text-l-muted dark:text-d-muted m-0">
-                Products
-              </p>
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4 font-mono text-xs">
+              <span className="red-ink font-bold text-sm">04 / PRODUCTS</span>
+              <span className="text-l-muted dark:text-d-muted">•</span>
+              <span className="text-l-muted dark:text-d-muted font-medium">
+                PRODUCT INITIATIVES
+              </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-l-text dark:text-d-text break-words">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-l-text dark:text-d-text break-words">
               Things I&apos;m building
             </h2>
-            <p className="text-base text-l-muted/80 dark:text-d-muted/80 mt-4 leading-relaxed max-w-xl tracking-tight">
+            <p className="text-base text-l-muted dark:text-d-muted mt-3 leading-relaxed max-w-xl tracking-tight">
               Side projects and products I&apos;m passionate about — from idea to
               launch.
             </p>
@@ -60,20 +57,20 @@ export default function Products() {
             return (
               <AnimatedSection key={product.name} delay={index * 0.12}>
                 <motion.div
-                  whileHover={{ y: -4, scale: 1.005 }}
+                  whileHover={{ y: -3 }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.25,
                     ease: [0.21, 0.47, 0.32, 0.98],
                   }}
-                  className="group relative bg-l-bg dark:bg-d-bg border border-l-border/50 dark:border-d-border/50 rounded-[1.5rem] sm:rounded-3xl p-6 sm:p-8 hover:shadow-2xl hover:shadow-black/[0.04] dark:hover:shadow-black/[0.2] hover:border-l-text/10 dark:hover:border-d-text/10 transition-all duration-300"
+                  className="group relative bg-l-bg dark:bg-d-bg border border-l-border dark:border-d-border rounded-xl p-6 sm:p-7 hover:border-red-ink/40 transition-colors duration-200"
                 >
                   {/* Top row: Icon + Status */}
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-l-border/50 to-l-border/20 dark:from-d-border/50 dark:to-d-border/20 flex items-center justify-center text-2xl sm:text-3xl shadow-sm">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-l-surface dark:bg-d-surface border border-l-border dark:border-d-border flex items-center justify-center text-2xl shadow-xs">
                       {product.icon}
                     </div>
                     <span
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium border ${status.badgeClass}`}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold border ${status.badgeClass}`}
                     >
                       <span
                         className={`w-1.5 h-1.5 rounded-full ${status.dotClass}`}
@@ -83,24 +80,24 @@ export default function Products() {
                   </div>
 
                   {/* Name + Tagline */}
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-1.5 tracking-tight text-l-text dark:text-d-text">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold mb-1 tracking-tight text-l-text dark:text-d-text">
                     {product.name}
                   </h3>
-                  <p className="text-sm text-l-muted dark:text-d-muted mb-4 tracking-tight">
+                  <p className="text-xs font-mono text-l-muted dark:text-d-muted mb-4 tracking-tight">
                     {product.tagline}
                   </p>
 
                   {/* Description */}
-                  <p className="text-[15px] sm:text-base text-l-muted/80 dark:text-d-muted/80 leading-relaxed mb-6 tracking-tight">
+                  <p className="text-sm text-l-muted dark:text-d-muted leading-relaxed mb-5 tracking-tight">
                     {product.description}
                   </p>
 
                   {/* Tech stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-5">
                     {product.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-3 py-1.5 text-[11px] font-medium bg-l-surface dark:bg-d-surface border border-l-border/60 dark:border-d-border/60 rounded-full text-l-muted dark:text-d-muted"
+                        className="px-2.5 py-1 text-[11px] font-mono bg-l-surface dark:bg-d-surface border border-l-border dark:border-d-border rounded text-l-muted dark:text-d-muted"
                       >
                         {t}
                       </span>
@@ -108,17 +105,17 @@ export default function Products() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-5 pt-5 border-t border-l-border/50 dark:border-d-border/50">
+                  <div className="flex items-center gap-5 pt-4 border-t border-l-border dark:border-d-border">
                     {product.url && (
                       <a
                         href={product.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text transition-colors duration-200"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-l-muted dark:text-d-muted hover:text-red-ink transition-colors duration-200"
                       >
                         <svg
-                          width="14"
-                          height="14"
+                          width="12"
+                          height="12"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -138,11 +135,11 @@ export default function Products() {
                         href={product.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text transition-colors duration-200"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-l-muted dark:text-d-muted hover:text-red-ink transition-colors duration-200"
                       >
                         <svg
-                          width="14"
-                          height="14"
+                          width="12"
+                          height="12"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"

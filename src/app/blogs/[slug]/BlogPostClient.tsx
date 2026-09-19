@@ -99,22 +99,22 @@ function renderContent(content: string) {
 
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   return (
-    <div className="bg-l-bg dark:bg-d-bg min-h-screen transition-colors duration-300 font-sans selection:bg-l-text selection:text-l-surface dark:selection:bg-d-text dark:selection:text-d-surface">
+    <div className="bg-l-bg dark:bg-d-bg bg-notebook-grid min-h-screen transition-colors duration-300 font-sans selection:bg-l-text selection:text-l-surface dark:selection:bg-d-text dark:selection:text-d-surface">
       {/* Top bar */}
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 dark:bg-[#161616]/80 backdrop-blur-xl rounded-full px-2 py-2 shadow-lg border border-l-border dark:border-d-border"
+        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-l-surface/90 dark:bg-d-surface/90 backdrop-blur-md rounded-lg px-2 py-1.5 shadow-sm border border-l-border dark:border-d-border"
       >
         <div className="flex items-center gap-1">
           <Link
             href="/#blogs"
-            className="px-4 py-2 text-sm text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text transition-colors duration-200 rounded-full hover:bg-l-border/30 dark:hover:bg-d-border/30 inline-flex items-center gap-1.5"
+            className="px-3 py-1.5 text-xs font-mono text-l-muted dark:text-d-muted hover:text-red-ink transition-colors duration-200 rounded hover:bg-l-border/30 dark:hover:bg-d-border/30 inline-flex items-center gap-1.5"
           >
             <svg
-              width="14"
-              height="14"
+              width="12"
+              height="12"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -127,47 +127,43 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             </svg>
             Back
           </Link>
-          <div className="w-px h-5 bg-l-border dark:bg-d-border mx-1" />
+          <div className="w-px h-4 bg-l-border dark:bg-d-border mx-1" />
           <ThemeToggle />
         </div>
       </motion.header>
 
-      <div className="w-full flex justify-center pt-32 pb-20">
+      <div className="w-full flex justify-center pt-28 pb-20">
         <motion.article
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="w-full max-w-2xl px-4"
         >
           {/* Blog post card */}
-          <div className="bg-l-surface dark:bg-d-surface rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-l-border/60 dark:border-d-border/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] relative overflow-hidden">
-            {/* Decorative gradient */}
-            <div className="absolute -top-32 -right-32 w-64 h-64 rounded-full bg-gradient-to-br from-blue-500/5 to-purple-500/5 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -left-32 w-64 h-64 rounded-full bg-gradient-to-tr from-purple-500/5 to-blue-500/5 blur-3xl pointer-events-none" />
-
+          <div className="paper-sheet rounded-2xl p-6 sm:p-10 md:p-14 relative overflow-hidden">
             <div className="relative z-10">
               {/* Meta */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-xs text-l-muted dark:text-d-muted tracking-wide">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="text-xs font-mono text-l-muted dark:text-d-muted tracking-wide">
                   {formatDate(post.date)}
                 </span>
-                <span className="w-1 h-1 rounded-full bg-l-muted/30 dark:bg-d-muted/30" />
-                <span className="text-xs text-l-muted dark:text-d-muted tracking-wide">
+                <span className="w-1 h-1 rounded-full bg-red-ink" />
+                <span className="text-xs font-mono text-l-muted dark:text-d-muted tracking-wide">
                   {post.readTime}
                 </span>
               </div>
 
               {/* Title */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-l-text dark:text-d-text mb-6 break-words leading-[1.1]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-l-text dark:text-d-text mb-6 break-words leading-[1.12]">
                 {post.title}
               </h1>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-10">
+              <div className="flex flex-wrap gap-2 mb-8">
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1.5 text-[11px] font-medium bg-l-bg dark:bg-d-bg border border-l-border/60 dark:border-d-border/60 rounded-full text-l-muted dark:text-d-muted"
+                    className="px-2.5 py-1 text-[11px] font-mono bg-l-bg dark:bg-d-bg border border-l-border dark:border-d-border rounded text-l-muted dark:text-d-muted"
                   >
                     {tag}
                   </span>
@@ -175,34 +171,20 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
               </div>
 
               {/* Divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-l-border dark:via-d-border to-transparent mb-10" />
+              <div className="w-full h-px bg-l-border dark:bg-d-border mb-8" />
 
               {/* Content */}
               <div className="prose-custom">{renderContent(post.content)}</div>
 
               {/* Bottom divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-l-border dark:via-d-border to-transparent mt-12 mb-8" />
+              <div className="w-full h-px bg-l-border dark:bg-d-border mt-10 mb-6" />
 
               {/* Back link */}
               <Link
                 href="/#blogs"
-                className="inline-flex items-center gap-2 text-sm text-l-muted dark:text-d-muted hover:text-l-text dark:hover:text-d-text transition-colors duration-200 group"
+                className="inline-flex items-center gap-2 text-xs font-mono text-l-muted dark:text-d-muted hover:text-red-ink transition-colors duration-200 group"
               >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="transform group-hover:-translate-x-0.5 transition-transform duration-200"
-                >
-                  <path d="m12 19-7-7 7-7" />
-                  <path d="M19 12H5" />
-                </svg>
-                Back to all posts
+                &larr; Back to all posts
               </Link>
             </div>
           </div>

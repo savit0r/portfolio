@@ -3,64 +3,121 @@
 import AnimatedSection from "./AnimatedSection";
 import { experience } from "@/data/portfolio";
 
-const typeIcons: Record<string, string> = {
-  work: "💼",
-  education: "🎓",
-  milestone: "⭐",
+const typeLabels: Record<string, string> = {
+  work: "WORK / INTERNSHIP",
+  education: "ACADEMIC / DEGREE",
+  milestone: "MILESTONE / SELF-DRIVEN",
+};
+
+const typeAnnotations: Record<string, string> = {
+  "Self-Learning & Growth": "foundation built ✓",
+  "Web Development Intern": "hands-on startup dev →",
+  "Bachelor's in Computer Science": "CS core fundamentals ✓",
+  "Started Coding Journey": "first line of Java code →",
 };
 
 export default function Experience() {
   return (
-    <section id="journey" className="bg-l-surface dark:bg-d-surface rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 md:p-16 border border-l-border/60 dark:border-d-border/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] relative overflow-hidden">
-      <div className="max-w-2xl relative z-10 w-full overflow-hidden">
+    <section
+      id="journey"
+      className="paper-sheet rounded-2xl p-6 sm:p-10 md:p-14 relative overflow-hidden border-2 border-l-border dark:border-d-border"
+    >
+      {/* Decorative tape elements */}
+      <div className="paper-tape -top-3 left-10 rotate-[-2deg] z-20" />
+      <div className="paper-tape -top-3 right-14 rotate-[1.5deg] z-20 hidden sm:block" />
+
+      {/* Header: Title 02 / JOURNEY */}
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-dashed border-l-border dark:border-d-border">
+        <div className="flex items-center gap-3 font-mono text-xs">
+          <span className="red-ink font-bold text-sm">02 / JOURNEY</span>
+          <span className="text-l-muted dark:text-d-muted">•</span>
+          <span className="text-l-muted dark:text-d-muted font-medium">
+            FIELD LOGS & TIMELINE
+          </span>
+        </div>
+        <span className="font-mono text-xs text-l-muted dark:text-d-muted">
+          CHRONOLOGICAL ARCHIVE
+        </span>
+      </div>
+
+      <div className="max-w-3xl relative z-10 w-full">
         <AnimatedSection>
-          <div className="mb-12">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-l-muted/50 dark:bg-d-muted/50" />
-              <p className="text-xs uppercase tracking-widest text-l-muted dark:text-d-muted m-0">
-                Journey
-              </p>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tighter text-l-text dark:text-d-text break-words">
+          <div className="mb-10">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-l-text dark:text-d-text break-words">
               My path so far
             </h2>
+            <div className="mt-2 flex items-center gap-2">
+              <span className="font-handwritten red-ink text-lg rotate-[-2deg]">
+                engineering progress log 2020 &rarr; present
+              </span>
+            </div>
           </div>
         </AnimatedSection>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-[7.5px] top-3 bottom-0 w-px bg-gradient-to-b from-transparent via-l-border/80 dark:via-d-border/80 to-transparent" />
+        {/* Timeline Container */}
+        <div className="relative pl-4 sm:pl-8">
+          {/* Vertical Red Ink Ruler Line */}
+          <div className="absolute left-0 sm:left-2 top-2 bottom-4 w-px bg-red-ink/40 border-l border-dashed border-red-ink/40" />
 
-          <div className="flex flex-col gap-10">
-            {experience.map((entry, index) => (
-              <AnimatedSection key={index} delay={index * 0.1}>
-                <div className="relative pl-10">
-                  {/* Timeline dot */}
-                  <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-l-surface dark:bg-d-surface border-2 border-l-border/80 dark:border-d-border/80 flex items-center justify-center shadow-sm">
-                    <div className="w-[5px] h-[5px] rounded-full bg-l-muted dark:bg-d-muted" />
-                  </div>
+          <div className="flex flex-col gap-8">
+            {experience.map((entry, index) => {
+              const annotation = typeAnnotations[entry.title];
+              const rotationClass =
+                index % 2 === 0 ? "sm:rotate-[-0.6deg]" : "sm:rotate-[0.6deg]";
 
-                  {/* Content */}
-                  <div className="group">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm">{typeIcons[entry.type]}</span>
-                      <span className="text-xs text-l-muted dark:text-d-muted tracking-wide">
-                        {entry.period}
-                      </span>
+              return (
+                <AnimatedSection key={index} delay={index * 0.1}>
+                  <div className="relative">
+                    {/* Red Margin Circle Marker */}
+                    <div className="absolute -left-4 sm:-left-8 top-5 w-3 h-3 rounded-full bg-l-surface dark:bg-d-surface border-2 border-red-ink z-10 flex items-center justify-center">
+                      <div className="w-1 h-1 rounded-full bg-red-ink" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-semibold tracking-tight mb-1 text-l-text dark:text-d-text break-words">
-                      {entry.title}
-                    </h3>
-                    <p className="text-[15px] text-l-muted dark:text-d-muted font-medium mb-3">
-                      {entry.company}
-                    </p>
-                    <p className="text-[15px] sm:text-base text-l-muted/90 dark:text-d-muted/90 leading-relaxed tracking-tight">
-                      {entry.description}
-                    </p>
+
+                    {/* Dated Index Card */}
+                    <div
+                      className={`group relative bg-l-bg dark:bg-d-bg border border-l-border dark:border-d-border rounded-xl p-5 sm:p-6 shadow-xs hover:border-red-ink/50 transition-transform duration-200 ${rotationClass} hover:rotate-0`}
+                    >
+                      {/* Header Row: Log Index + Period + Type Badge */}
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <div className="flex items-center gap-2 font-mono text-xs">
+                          <span className="red-ink font-bold">
+                            [LOG 0{index + 1}]
+                          </span>
+                          <span className="px-2.5 py-0.5 text-xs font-mono font-bold red-ink bg-red-ink/5 dark:bg-red-ink/10 rounded border border-red-ink/20">
+                            {entry.period}
+                          </span>
+                        </div>
+                        <span className="font-mono text-[10px] tracking-widest text-l-muted dark:text-d-muted uppercase font-semibold">
+                          {typeLabels[entry.type] || entry.type}
+                        </span>
+                      </div>
+
+                      {/* Title & Organization */}
+                      <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-l-text dark:text-d-text mb-1 break-words">
+                        {entry.title}
+                      </h3>
+                      <p className="font-mono text-xs text-l-muted dark:text-d-muted font-medium mb-3">
+                        @ {entry.company}
+                      </p>
+
+                      {/* Description */}
+                      <p className="text-sm text-l-muted dark:text-d-muted leading-relaxed tracking-tight">
+                        {entry.description}
+                      </p>
+
+                      {/* Red Ink Marginalia / Correction Mark */}
+                      {annotation && (
+                        <div className="mt-4 pt-3 border-t border-dashed border-l-border dark:border-d-border flex justify-end">
+                          <span className="font-handwritten red-ink text-base">
+                            {annotation}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </AnimatedSection>
-            ))}
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </div>
